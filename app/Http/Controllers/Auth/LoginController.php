@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['guest']);
+    }
+
     public function index()
     {
         return view('auth.login');
@@ -20,10 +25,16 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (!Auth::attempt($request->only('email', 'password'))) {
+        if (!Auth::attempt($request->only('email', 'password'), $request->remember)) {
             return back()->with('status', 'Invalid login details');
         }
 
         return redirect()->route('dashboard');
     }
 }
+
+// h: note
+
+// parameter kedua pada method attempt adalah remember me
+// jika remember me di ceklis, maka akan bernilai 'on', dan cookie nya akan disimpan di db
+// jika tidak diceklis, akan bernilai null
