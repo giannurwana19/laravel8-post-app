@@ -56,7 +56,7 @@
 
             <div class="mb-4">
                 <label for="password_confirmation" class="sr-only">Password Confirmation</label>
-                <input type="password" name="password_confirmation" id="password"
+                <input type="password" name="password_confirmation" id="password_confirmation"
                     class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password_confirmation') border-red-500 @enderror"
                     placeholder="Repeat your password">
                 @error('password_confirmation')
