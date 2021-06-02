@@ -16,7 +16,7 @@
                 <label for="email" class="sr-only">Email</label>
                 <input type="email" name="email" value="{{ old('email') }}" id="email"
                     class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('email') border-red-500 @enderror"
-                    placeholder="Your Email">
+                    placeholder="Your Email" autofocus>
                 @error('email')
                 <div class="text-red-500 mt-2 text-sm">
                     {{ $message }}
