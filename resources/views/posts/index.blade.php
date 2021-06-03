@@ -6,6 +6,8 @@
         <form action="{{ route('posts') }}" method="POST" class="mb-4">
             @csrf
 
+            @auth
+
             <div class="mb-4">
                 <label for="body" class="sr-only">Body</label>
                 <textarea name="body" id="body"
@@ -23,6 +25,13 @@
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 font-medium rounded">Post</button>
             </div>
         </form>
+        @else
+        <div class="mb-5">
+            <a href="{{ route('login') }}" class="bg-blue-500 text-white px-4 py-2 font-medium rounded">
+                Login to add post
+            </a>
+        </div>
+        @endauth
 
         @if($posts->count())
         @foreach ($posts as $post)
