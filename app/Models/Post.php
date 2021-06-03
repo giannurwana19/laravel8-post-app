@@ -20,4 +20,23 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    /**
+     * likedBy
+     * mengetahui apakah user sudah makan atau belum
+     * jika true, maka user akan unlike
+     * jika false, maka user akan like
+     *
+     * @param  mixed $user
+     * @return void
+     */
+    public function likedBy(User $user)
+    {
+        return $this->likes->contains('user_id', $user->id);
+    }
 }

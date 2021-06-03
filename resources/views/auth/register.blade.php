@@ -72,6 +72,10 @@
                 </button>
             </div>
         </form>
+
+        <div class="text-sm text-center mt-5">
+            Already have account? <a href="{{ route('login') }}" class="text-blue-500 hover:text-blue-700">login</a>
+        </div>
     </div>
 </div>
 @endsection
