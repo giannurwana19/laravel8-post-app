@@ -40,7 +40,7 @@
                 class="text-gray-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
             <p class="mb-2 text-sm">{{ $post->body }}</p>
 
-            @if($post->ownedBy(auth()->user()))
+            @can('delete', $post)
             <div>
                 <form action="{{ route('posts.destroy', $post) }}" method="POST">
                     @csrf
@@ -48,7 +48,7 @@
                     <button type="submit" class="text-blue-500">Delete</button>
                 </form>
             </div>
-            @endif
+            @endcan
 
             <div class="flex items-center">
                 @auth
