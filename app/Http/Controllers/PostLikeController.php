@@ -24,15 +24,11 @@ class PostLikeController extends Controller
      */
     public function store(Post $post, Request $request)
     {
-        // dd($post->likes()->withTrashed()->get());
-
         if ($post->likedBy($request->user())) {
             return response(null, 409);
         }
 
         $likedBefore = !$post->likes()->onlyTrashed()->where('user_id', $request->user()->id)->count();
-
-        // dd($likedBefore);
 
         if ($likedBefore && $post->user_id !== auth()->id()) {
             Mail::to(auth()->user())->send(new PostLiked(auth()->user(), $post));

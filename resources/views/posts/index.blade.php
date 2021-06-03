@@ -32,14 +32,12 @@
         </div>
         @endauth
 
-        @if($posts->count())
-        @foreach ($posts as $post)
+        @forelse($posts as $post)
         <x-post :post="$post" />
-        @endforeach
-        {{ $posts->links() }}
-        @else
+        @empty
         <p>There are no posts!</p>
-        @endif
+        @endforelse
+        {{ $posts->links() }}
     </div>
 </div>
 @endsection
